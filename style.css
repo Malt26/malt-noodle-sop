@@ -160,17 +160,3 @@ tr:hover td { background: #faf8f3; }
 .btn-ghost { background: #fff; color: #777; border: 1px solid #d8d2c5; border-radius: 8px; padding: 8px 16px; cursor: pointer; font-size: 14px; }
 .btn-ghost:hover { background: #f5f1ea; }
 .btn-primary:disabled { opacity: .6; cursor: default; }
-
-/* 操作备忘录 */
-.memo-view { background: #fff; border: 1px solid #e8dfd0; border-radius: 12px; padding: 22px 28px; max-width: 920px; margin: 0 auto; box-shadow: 0 1px 3px rgba(0,0,0,.04); line-height: 1.75; color: #3a3027; }
-.memo-view h1 { font-size: 24px; color: #5c4630; border-bottom: 2px solid #e3d3bb; padding-bottom: 8px; margin: 4px 0 16px; }
-.memo-view h2 { font-size: 19px; color: #9c6b3f; margin: 24px 0 10px; }
-.memo-view h3 { font-size: 16px; color: #6b5333; margin: 18px 0 8px; }
-.memo-view p { margin: 8px 0; }
-.memo-view ul, .memo-view ol { margin: 8px 0 8px 4px; padding-left: 22px; }
-.memo-view li { margin: 4px 0; }
-.memo-view blockquote { margin: 12px 0; padding: 8px 14px; background: #fbf6ee; border-left: 4px solid #c9a36a; color: #6b5e4f; border-radius: 0 8px 8px 0; }
-.memo-view code { background: #f1e9dc; color: #8a5a2b; padding: 1px 5px; border-radius: 4px; font-size: 13px; }
-.memo-view strong { color: #8a3b2b; }
-.memo-updated { font-size: 13px; color: #9a8c79; }
-.memo-edit { width: 100%; min-height: 460px; border: 1px solid #d8d2c5; border-radius: 8px; padding: 12px; font-size: 14px; line-height: 1.7; font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace; resize: vertical; box-sizing: border-box; }
