@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>麦芽精酿 | 面馆后厨工作台</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">🍜 麦芽精酿 | 面馆后厨工作台</div>
+    <nav class="topnav">
+      <button class="navbtn active" data-mod="dashboard">工作台概览</button>
+      <button class="navbtn" data-mod="base">汤底/酱料底成本台账</button>
+      <button class="navbtn" data-mod="dish">菜品研发档案</button>
+      <button class="navbtn" data-mod="ing">原料库存台账</button>
+      <button class="navbtn" data-mod="sale">每日销售日报表</button>
+      <button class="navbtn" data-mod="tpl">打印/PDF模板</button>
+      <button class="navbtn" data-mod="guide">操作流程</button>
+      <button class="navbtn" data-mod="memo">📒 操作备忘录</button>
+    </nav>
+  </header>
+
+  <main id="main"></main>
+
+  <!-- 模态框 -->
+  <div id="modal" class="modal-hidden">
+    <div class="modal-mask"></div>
+    <div class="modal-box">
+      <div class="modal-head">
+        <h3 id="modal-title">编辑</h3>
+        <button id="modal-close">✕</button>
+      </div>
+      <div class="modal-body" id="modal-body"></div>
+      <div class="modal-foot">
+        <button id="modal-save" class="btn-primary">保存</button>
+        <button id="modal-cancel" class="btn-ghost">取消</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast" class="toast-hidden"></div>
+
+  <script>window.__OFFLINE__=true;</script>
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
