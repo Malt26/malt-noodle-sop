@@ -91,7 +91,6 @@ async function render() {
   if (STATE.mod === "sale") return renderModule(main, "sale");
   if (STATE.mod === "tpl") return renderTplView(main);
   if (STATE.mod === "guide") return renderGuide(main);
-  if (STATE.mod === "memo") return renderMemo(main);
 }
 
 // ---------------- 仪表盘 ----------------
@@ -940,46 +939,6 @@ function renderGuide(main) {
     <div class="guide-section"><h2>${t}</h2>${ss.map((s, i) =>
       `<div class="guide-step"><div class="step-no">${i + 1}</div><div class="step-txt">${esc(s)}</div></div>`).join("")}</div>
   `).join("");
-}
-
-// ---------------- 操作备忘录（内置，Markdown 渲染，可编辑） ----------------
-async function renderMemo(main) {
-  main.innerHTML = `<div class="toolbar">
-      <span class="memo-updated" id="memo-updated"></span>
-      <button class="btn-primary" id="btn-edit-memo" style="margin-left:auto">✏️ 编辑备忘录</button>
-    </div>
-    <div id="memo-view" class="memo-view"><div class="empty">加载中…</div></div>`;
-  const view = main.querySelector("#memo-view");
-  const upd = main.querySelector("#memo-updated");
-  try {
-    const j = await getJSON("/api/memo");
-    view.innerHTML = j.html || `<div class="empty">备忘录为空，点击右上角「编辑备忘录」开始记录</div>`;
-    upd.textContent = j.updated_at ? "最近更新：" + j.updated_at : "";
-  } catch (e) {
-    view.innerHTML = `<div class="empty">加载失败</div>`;
-  }
-  const editBtn = main.querySelector("#btn-edit-memo");
-  if (window.__OFFLINE__ && editBtn) editBtn.style.display = "none";
-  main.querySelector("#btn-edit-memo").onclick = openMemoEdit;
-}
-async function openMemoEdit() {
-  if (offlineGuard()) return;
-  const cur = await getJSON("/api/memo");
-  const body = openModal("编辑操作备忘录（Markdown）");
-  body.innerHTML = `
-    <p class="hint">支持 Markdown：<code># 标题</code> / <code>## 小标题</code> / <code>1. 序号</code> / <code>- 项目符号</code> / <code>&gt; 引用</code>。保存后 iPad 端刷新即可看到最新内容。</p>
-    <textarea data-key="content" class="memo-edit" placeholder="在此编写操作备忘录…">${esc(cur.content || "")}</textarea>`;
-  document.getElementById("modal-save").onclick = async () => {
-    const payload = { content: body.querySelector('[data-key="content"]').value };
-    await fetch(API + "/api/memo", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload),
-    });
-    closeModal();
-    toast("备忘录已保存");
-    render();
-  };
 }
 
 // ---------------- 打印 / PDF 模板中心 ----------------
